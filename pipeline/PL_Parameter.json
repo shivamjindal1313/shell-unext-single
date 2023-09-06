@@ -22,7 +22,12 @@
 		"parameters": {
 			"account_names": {
 				"type": "array",
-				"defaultValue": "[\"aaa\",\"bbb\",\"ccc\",\"ddd\"]]"
+				"defaultValue": [
+					"aaa",
+					"bbb",
+					"ccc",
+					"ddd"
+				]
 			}
 		},
 		"annotations": []
