@@ -1,0 +1,12 @@
+{
+	"name": "PL_Parameter",
+	"properties": {
+		"parameters": {
+			"account_name": {
+				"type": "string",
+				"defaultValue": "ab-8672"
+			}
+		},
+		"annotations": []
+	}
+}
