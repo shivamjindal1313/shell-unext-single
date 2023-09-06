@@ -218,6 +218,48 @@
 				"annotations": []
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_Parameter')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Act_Filter",
+						"type": "Filter",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@pipeline().parameters.account_names",
+								"type": "Expression"
+							},
+							"condition": {
+								"value": "@not(equals(item(),'ccc' ))",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"account_names": {
+						"type": "array",
+						"defaultValue": [
+							"aaa",
+							"bbb",
+							"ccc",
+							"ddd"
+						]
+					}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
 		}
 	]
 }
