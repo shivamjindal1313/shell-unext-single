@@ -2,9 +2,9 @@
 	"name": "PL_Parameter",
 	"properties": {
 		"parameters": {
-			"account_name": {
-				"type": "string",
-				"defaultValue": "ab-8672"
+			"account_names": {
+				"type": "array",
+				"defaultValue": "[\"aaa\",\"bbb\",\"ccc\",\"ddd\"]]"
 			}
 		},
 		"annotations": []
