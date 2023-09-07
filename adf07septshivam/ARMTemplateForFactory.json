@@ -621,6 +621,15 @@
 					"transformations": [
 						{
 							"name": "FilterYear"
+						},
+						{
+							"name": "FilterGenre"
+						},
+						{
+							"name": "RottenTomatoes"
+						},
+						{
+							"name": "select"
 						}
 					],
 					"scriptLines": [
@@ -637,8 +646,17 @@
 						"     allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     ignoreNoFilesFound: false) ~> MovieDataSource1",
-						"MovieDataSource1 filter(toInteger(Year) >= 2002 && toInteger(Year)<=2007) ~> FilterYear",
-						"FilterYear sink(allowSchemaDrift: true,",
+						"MovieDataSource1 filter(toInteger(Year) >= 2007 && toInteger(Year)<=2009) ~> FilterYear",
+						"FilterYear filter(rlike(Genre, 'Comedy')) ~> FilterGenre",
+						"FilterGenre filter(toFloat({Rotten Tomatoes %})>=75) ~> RottenTomatoes",
+						"RottenTomatoes select(mapColumn(",
+						"          Film,",
+						"          Genre,",
+						"          Year",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select",
+						"select sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true) ~> MovieDataSink"
