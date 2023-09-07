@@ -1,0 +1,12 @@
+{
+	"name": "HttpServer1",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.0&query=47.60357,-122.32945&subscription-key=RC9l6uyUWjmZAQWlQFZEgWV4F2oBZzg1HmC7lhNPyGw",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
