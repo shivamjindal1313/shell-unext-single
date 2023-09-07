@@ -1,0 +1,480 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"dateTime": {
+								"type": "string"
+							},
+							"phrase": {
+								"type": "string"
+							},
+							"iconCode": {
+								"type": "integer"
+							},
+							"hasPrecipitation": {
+								"type": "boolean"
+							},
+							"isDayTime": {
+								"type": "boolean"
+							},
+							"temperature": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"unitType": {
+										"type": "integer"
+									}
+								}
+							},
+							"realFeelTemperature": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"unitType": {
+										"type": "integer"
+									}
+								}
+							},
+							"realFeelTemperatureShade": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"unitType": {
+										"type": "integer"
+									}
+								}
+							},
+							"relativeHumidity": {
+								"type": "integer"
+							},
+							"dewPoint": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"unitType": {
+										"type": "integer"
+									}
+								}
+							},
+							"wind": {
+								"type": "object",
+								"properties": {
+									"direction": {
+										"type": "object",
+										"properties": {
+											"degrees": {
+												"type": "number"
+											},
+											"localizedDescription": {
+												"type": "string"
+											}
+										}
+									},
+									"speed": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									}
+								}
+							},
+							"windGust": {
+								"type": "object",
+								"properties": {
+									"speed": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									}
+								}
+							},
+							"uvIndex": {
+								"type": "integer"
+							},
+							"uvIndexPhrase": {
+								"type": "string"
+							},
+							"visibility": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"unitType": {
+										"type": "integer"
+									}
+								}
+							},
+							"obstructionsToVisibility": {
+								"type": "string"
+							},
+							"cloudCover": {
+								"type": "integer"
+							},
+							"ceiling": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"unitType": {
+										"type": "integer"
+									}
+								}
+							},
+							"pressure": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"unitType": {
+										"type": "integer"
+									}
+								}
+							},
+							"pressureTendency": {
+								"type": "object",
+								"properties": {
+									"localizedDescription": {
+										"type": "string"
+									},
+									"code": {
+										"type": "string"
+									}
+								}
+							},
+							"past24HourTemperatureDeparture": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"unitType": {
+										"type": "integer"
+									}
+								}
+							},
+							"apparentTemperature": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"unitType": {
+										"type": "integer"
+									}
+								}
+							},
+							"windChillTemperature": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"unitType": {
+										"type": "integer"
+									}
+								}
+							},
+							"wetBulbTemperature": {
+								"type": "object",
+								"properties": {
+									"value": {
+										"type": "number"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"unitType": {
+										"type": "integer"
+									}
+								}
+							},
+							"precipitationSummary": {
+								"type": "object",
+								"properties": {
+									"pastHour": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"past3Hours": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"past6Hours": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"past9Hours": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"past12Hours": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"past18Hours": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"past24Hours": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									}
+								}
+							},
+							"temperatureSummary": {
+								"type": "object",
+								"properties": {
+									"past6Hours": {
+										"type": "object",
+										"properties": {
+											"minimum": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											},
+											"maximum": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									},
+									"past12Hours": {
+										"type": "object",
+										"properties": {
+											"minimum": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											},
+											"maximum": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									},
+									"past24Hours": {
+										"type": "object",
+										"properties": {
+											"minimum": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											},
+											"maximum": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
