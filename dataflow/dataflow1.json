@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "DSInput",
+						"referenceName": "DSInput07",
 						"type": "DatasetReference"
 					},
 					"name": "MovieDataSource1"
@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "DSOutput",
+						"referenceName": "DSOutput07",
 						"type": "DatasetReference"
 					},
 					"name": "MovieDataSink"
