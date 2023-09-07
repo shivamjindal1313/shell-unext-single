@@ -24,6 +24,9 @@
 			"transformations": [
 				{
 					"name": "FilterYear"
+				},
+				{
+					"name": "FilterGenre"
 				}
 			],
 			"scriptLines": [
@@ -41,7 +44,8 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> MovieDataSource1",
 				"MovieDataSource1 filter(toInteger(Year) >= 2002 && toInteger(Year)<=2007) ~> FilterYear",
-				"FilterYear sink(allowSchemaDrift: true,",
+				"FilterYear filter(rlike(Genre, 'Comedy')) ~> FilterGenre",
+				"FilterGenre sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> MovieDataSink"
