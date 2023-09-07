@@ -18,6 +18,10 @@
 		"AzureStorageLinkedService_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sa06septshivam1.dfs.core.windows.net/"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.0&query=47.60357,-122.32945&subscription-key=RC9l6uyUWjmZAQWlQFZEgWV4F2oBZzg1HmC7lhNPyGw"
 		}
 	},
 	"variables": {
@@ -700,6 +704,597 @@
 				"annotations": []
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/HttpServer1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('HttpServer1_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Json1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "HttpServer1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"results": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"dateTime": {
+										"type": "string"
+									},
+									"phrase": {
+										"type": "string"
+									},
+									"iconCode": {
+										"type": "integer"
+									},
+									"hasPrecipitation": {
+										"type": "boolean"
+									},
+									"isDayTime": {
+										"type": "boolean"
+									},
+									"temperature": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"realFeelTemperature": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"realFeelTemperatureShade": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"relativeHumidity": {
+										"type": "integer"
+									},
+									"dewPoint": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"wind": {
+										"type": "object",
+										"properties": {
+											"direction": {
+												"type": "object",
+												"properties": {
+													"degrees": {
+														"type": "number"
+													},
+													"localizedDescription": {
+														"type": "string"
+													}
+												}
+											},
+											"speed": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									},
+									"windGust": {
+										"type": "object",
+										"properties": {
+											"speed": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									},
+									"uvIndex": {
+										"type": "integer"
+									},
+									"uvIndexPhrase": {
+										"type": "string"
+									},
+									"visibility": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"obstructionsToVisibility": {
+										"type": "string"
+									},
+									"cloudCover": {
+										"type": "integer"
+									},
+									"ceiling": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"pressure": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"pressureTendency": {
+										"type": "object",
+										"properties": {
+											"localizedDescription": {
+												"type": "string"
+											},
+											"code": {
+												"type": "string"
+											}
+										}
+									},
+									"past24HourTemperatureDeparture": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"apparentTemperature": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"windChillTemperature": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"wetBulbTemperature": {
+										"type": "object",
+										"properties": {
+											"value": {
+												"type": "number"
+											},
+											"unit": {
+												"type": "string"
+											},
+											"unitType": {
+												"type": "integer"
+											}
+										}
+									},
+									"precipitationSummary": {
+										"type": "object",
+										"properties": {
+											"pastHour": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											},
+											"past3Hours": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											},
+											"past6Hours": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											},
+											"past9Hours": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											},
+											"past12Hours": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											},
+											"past18Hours": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											},
+											"past24Hours": {
+												"type": "object",
+												"properties": {
+													"value": {
+														"type": "number"
+													},
+													"unit": {
+														"type": "string"
+													},
+													"unitType": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									},
+									"temperatureSummary": {
+										"type": "object",
+										"properties": {
+											"past6Hours": {
+												"type": "object",
+												"properties": {
+													"minimum": {
+														"type": "object",
+														"properties": {
+															"value": {
+																"type": "number"
+															},
+															"unit": {
+																"type": "string"
+															},
+															"unitType": {
+																"type": "integer"
+															}
+														}
+													},
+													"maximum": {
+														"type": "object",
+														"properties": {
+															"value": {
+																"type": "number"
+															},
+															"unit": {
+																"type": "string"
+															},
+															"unitType": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											},
+											"past12Hours": {
+												"type": "object",
+												"properties": {
+													"minimum": {
+														"type": "object",
+														"properties": {
+															"value": {
+																"type": "number"
+															},
+															"unit": {
+																"type": "string"
+															},
+															"unitType": {
+																"type": "integer"
+															}
+														}
+													},
+													"maximum": {
+														"type": "object",
+														"properties": {
+															"value": {
+																"type": "number"
+															},
+															"unit": {
+																"type": "string"
+															},
+															"unitType": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											},
+											"past24Hours": {
+												"type": "object",
+												"properties": {
+													"minimum": {
+														"type": "object",
+														"properties": {
+															"value": {
+																"type": "number"
+															},
+															"unit": {
+																"type": "string"
+															},
+															"unitType": {
+																"type": "integer"
+															}
+														}
+													},
+													"maximum": {
+														"type": "object",
+														"properties": {
+															"value": {
+																"type": "number"
+															},
+															"unit": {
+																"type": "string"
+															},
+															"unitType": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/HttpServer1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_WebData')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings",
+									"copyBehavior": "FlattenHierarchy"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "Json1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Json2",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Json1')]",
+				"[concat(variables('factoryId'), '/datasets/Json2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Json2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "output"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
 		}
 	]
 }

@@ -13,6 +13,9 @@
 		},
 		"AzureStorageLinkedService_properties_typeProperties_url": {
 			"value": "https://sa06septshivam1.dfs.core.windows.net/"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.0&query=47.60357,-122.32945&subscription-key=RC9l6uyUWjmZAQWlQFZEgWV4F2oBZzg1HmC7lhNPyGw"
 		}
 	}
 }
