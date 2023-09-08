@@ -17,10 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderStoredProcedureName": {
-							"value": "create procedure selectall\nAS\nselect * from data_source_table\ngo;",
-							"type": "Expression"
-						},
+						"sqlReaderStoredProcedureName": "[dbo].[usp_write]",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
