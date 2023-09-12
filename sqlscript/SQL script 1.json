@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP 100*\nFROM OPENROWSET(\n    BULK 'https://sa12septshivam.dfs.core.windows.net/fs12septshivam/NYCTripSmall.parquet',\n    FORMAT='PARQUET'\n) AS [RESULT]\n\nCREATE DATABASE DataExplorationDB\n    COLLATE Latin1_General_100_BIN2_UTF8\n\nuse DataExplorationDB\n\nCREATE EXTERNAL DATA SOURCE dssa12septshivam\nWITH (LOCATION='https://sa12septshivam.dfs.core.windows.net')\n\nCREATE LOGIN user_data_explorer WITH PASSWORD ='localhost@1234567'\n\nCREATE USER usrdb_data_explorer FOR LOGIN user_data_explorer\n\nGRANT ADMINISTER DATABASE BULK OPERATIONS TO usrdb_data_explorer;\n\nselect \n    TOP 100 *\nFROM    \n    OPENROWSET(\n        BULK '/fs12septshivam/NYCTripSmall.parquet',\n        DATA_SOURCE='dssa12septshivam',\n        FORMAT='PARQUET'\n    ) AS [result]\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "DataExplorationDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
